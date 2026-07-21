@@ -1,0 +1,67 @@
+flowchart LR
+    %% Actors
+    subgraph Users [System Users]
+        direction TB
+        Candidate([Candidate])
+        Company([Company])
+        Guest([Guest])
+    end
+
+    %% Use Cases
+    subgraph CareerConnect [CareerConnect Platform Use Cases]
+        direction TB
+        
+        %% Guest/General Auth
+        Register(Register Account)
+        Login(Login)
+        SearchJobs(Search & Browse Jobs)
+        Contact(Contact Support)
+        
+        %% Candidate specifics
+        UserProfile(Manage Profile & Resume)
+        Apply(Apply for Jobs)
+        TrackApp(Track Applications)
+        ManageRefs(Manage References)
+        
+        %% Company specifics
+        CompanyProfile(Manage Company Info)
+        PostJob(Post New Job)
+        ManageJobs(Manage Job Listings)
+        ReviewApps(Review Applications)
+        
+        %% Shared features
+        Chat(Chat & Messaging)
+        SocialPosts(Create & View Posts)
+        Notifications(Receive Notifications)
+    end
+
+    %% Relationships for Guest
+    Guest -.-> Register
+    Guest -.-> Login
+    Guest -.-> SearchJobs
+    Guest -.-> Contact
+
+    %% Relationships for Candidate
+    Candidate --> Login
+    Candidate --> SearchJobs
+    Candidate --> UserProfile
+    Candidate --> Apply
+    Candidate --> TrackApp
+    Candidate --> ManageRefs
+    Candidate --> Chat
+    Candidate --> SocialPosts
+    Candidate --> Notifications
+
+    %% Relationships for Company
+    Company --> Login
+    Company --> CompanyProfile
+    Company --> PostJob
+    Company --> ManageJobs
+    Company --> ReviewApps
+    Company --> Chat
+    Company --> SocialPosts
+    Company --> Notifications
+
+    %% Styling
+    style CareerConnect fill:#fbfbfb,stroke:#a0aec0,stroke-width:2px,rx:10,ry:10;
+    style Users fill:#edf2f7,stroke:#a0aec0,stroke-width:2px,rx:10,ry:10;

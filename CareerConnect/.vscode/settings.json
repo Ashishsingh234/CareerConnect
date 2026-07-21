@@ -1,0 +1,13 @@
+{
+    "css.lint.unknownAtRules": "ignore",
+    "scss.lint.unknownAtRules": "ignore",
+    "less.lint.unknownAtRules": "ignore",
+    "css.validate": false,
+    "postcss.validate": false,
+    "problems.showDecorations": false,
+    "explorer.decorations.badges": false,
+    "explorer.decorations.colors": false,
+    "tailwindCSS.includeLanguages": {
+        "plaintext": "javascript"
+    }
+}

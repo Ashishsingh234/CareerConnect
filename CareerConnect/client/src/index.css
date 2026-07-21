@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-text font-sans antialiased selection:bg-brand selection:text-white;
+  }
+}
+
+@layer components {
+
+  /* ── Cards ── */
+  .glass {
+    @apply bg-white/70 backdrop-blur-lg border border-white/50 shadow-glass;
+  }
+
+  .glass-card {
+    @apply bg-white border border-border shadow-card rounded-2xl transition-all duration-200 hover:shadow-soft hover:border-brand/20;
+  }
+
+  /* new: flat clean card used for job cards */
+  .job-card {
+    @apply bg-white border border-border rounded-2xl p-5 cursor-pointer transition-all duration-200 hover:shadow-soft hover:border-brand/30 hover:-translate-y-0.5;
+  }
+
+  /* ── Typography ── */
+  .text-gradient {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-brand to-accent;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply px-5 py-2.5 bg-brand text-white font-semibold rounded-xl shadow-soft hover:bg-brandDark hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply px-5 py-2.5 bg-white text-text font-semibold rounded-xl border border-border shadow-soft hover:bg-gray-50 hover:border-brand/30 hover:-translate-y-0.5 transition-all duration-200 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2;
+  }
+
+  .btn-ghost {
+    @apply px-5 py-2.5 text-brand font-semibold rounded-xl border border-brand hover:bg-brand hover:text-white transition-all duration-200 inline-flex items-center justify-center gap-2;
+  }
+
+  /* ── Inputs ── */
+  .input-field {
+    @apply w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-brand/20 focus:border-brand transition-all duration-200 outline-none placeholder-textMuted text-sm;
+  }
+
+  .form-label {
+    @apply block text-sm font-semibold text-text mb-1.5;
+  }
+
+  /* ── Badges / Tags ── */
+  .badge-tag {
+    @apply text-xs font-semibold px-3 py-1 rounded-full border;
+  }
+
+  .badge-green {
+    @apply badge-tag bg-brand/10 text-brand border-brand/20;
+  }
+
+  .badge-gray {
+    @apply badge-tag bg-gray-100 text-gray-600 border-gray-200;
+  }
+
+  /* ── Filter sidebar ── */
+  .filter-section {
+    @apply pb-5 mb-5 border-b border-border;
+  }
+
+  .filter-title {
+    @apply text-sm font-bold text-text mb-3 uppercase tracking-wider;
+  }
+
+  .filter-checkbox {
+    @apply flex items-center gap-2.5 py-1 cursor-pointer;
+  }
+
+  .filter-checkbox input[type="checkbox"] {
+    @apply w-4 h-4 accent-brand rounded;
+  }
+
+  .filter-checkbox span {
+    @apply text-sm text-text font-medium;
+  }
+}
+
+/* Hide scrollbar */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
