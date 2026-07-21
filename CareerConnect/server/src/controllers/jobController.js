@@ -89,11 +89,23 @@ async function listJobs(req, res) {
     filter.jobType = { $in: types };
   }
 
-  // Functions (Skills) filter
+  // Functions (Job Category) filter — match against job title OR required skills
   if (functions) {
     const fns = Array.isArray(functions) ? functions : functions.split(',').map(f => f.trim());
     const fnRegexes = fns.map(f => new RegExp(f, 'i'));
-    filter.requiredSkills = { $in: fnRegexes };
+    const fnCondition = {
+      $or: [
+        { title: { $in: fnRegexes } },
+        { requiredSkills: { $in: fnRegexes } }
+      ]
+    };
+    // If location already set a $or, wrap both in $and to avoid conflict
+    if (filter.$or) {
+      filter.$and = [{ $or: filter.$or }, fnCondition];
+      delete filter.$or;
+    } else {
+      Object.assign(filter, fnCondition);
+    }
   }
 
   // Salary filtering
