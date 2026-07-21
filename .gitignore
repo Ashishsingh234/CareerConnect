@@ -10,7 +10,7 @@ node_modules/
 .env.development.local
 .env.test.local
 .env.production.local
-*.env
+# *.env - keeping .env.production tracked for deployment
 
 # Build output
 dist/
